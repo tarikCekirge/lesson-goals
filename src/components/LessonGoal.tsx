@@ -1,4 +1,9 @@
-const LessonGoal = ({ title, description }: { title: string, description: string }) => {
+interface LessonGoalProps {
+    title: string;
+    description: string
+}
+
+const LessonGoal = ({ title, description }: LessonGoalProps) => {
     return (
         <article className="p-5 rounded-md bg-gradient-to-r from-slate-800 to-slate-600 text-white gap-4">
             <div className="space-y-2">
