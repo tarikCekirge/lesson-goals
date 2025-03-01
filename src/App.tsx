@@ -26,6 +26,10 @@ function App() {
     })
   }
 
+  const handleDeleteGoal = (id: number) => {
+    setGoals(prevGoals => prevGoals.filter((goal) => goal.id !== id))
+  }
+
   return (
     <main className='p-4'>
       <div className="container max-w-5xl">
@@ -36,7 +40,7 @@ function App() {
           <h1 className='text-4xl font-bold'>Your Lesson Goals</h1>
         </Header>
         <button onClick={handleAddGoal}>Add Goal</button>
-        <LessonGoalList goals={goals} />
+        <LessonGoalList goals={goals} onDeleteGoal={handleDeleteGoal} />
 
 
       </div>

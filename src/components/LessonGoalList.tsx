@@ -2,10 +2,11 @@ import LessonGoal from "./LessonGoal";
 import { type LessonGoal as LGoal } from "../App"
 
 interface LessonGoalListProps {
-    goals: LGoal[]
+    goals: LGoal[];
+    onDeleteGoal: (id: number) => void
 };
 
-const LessonGoalList = ({ goals }: LessonGoalListProps) => {
+const LessonGoalList = ({ goals, onDeleteGoal }: LessonGoalListProps) => {
     return (
         <>
             {
@@ -13,8 +14,8 @@ const LessonGoalList = ({ goals }: LessonGoalListProps) => {
                     <ul className='grid grid-cols-2 gap-4'>
                         {
                             goals.map((goal) => (
-                                <li key={goal.id}>
-                                    <LessonGoal title={goal.title} >
+                                <li key={goal.id} >
+                                    <LessonGoal id={goal.id} title={goal.title} onDelete={onDeleteGoal}>
                                         <p>{goal.description}</p>
                                     </LessonGoal>
                                 </li>
