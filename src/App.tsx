@@ -16,12 +16,12 @@ function App() {
 
   const [goals, setGoals] = useState<LessonGoal[]>([]);
 
-  const handleAddGoal = () => {
+  const handleAddGoal = (goal: string, summary: string) => {
     setGoals(prevState => {
       const newGoal: LessonGoal = {
         id: Math.random(),
-        title: "React + Ts",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, expedita?"
+        title: goal,
+        description: summary
       }
       return [...prevState, newGoal]
     })
@@ -40,8 +40,7 @@ function App() {
         }}>
           <h1 className='text-4xl font-bold'>Your Lesson Goals</h1>
         </Header>
-        <NewGoal />
-        <button onClick={handleAddGoal}>Add Goal</button>
+        <NewGoal onAddGoal={handleAddGoal} />
         <LessonGoalList goals={goals} onDeleteGoal={handleDeleteGoal} />
 
 
