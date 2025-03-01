@@ -1,11 +1,13 @@
-import { type PropsWithChildren } from "react";
+import type { FC, PropsWithChildren } from "react";
 
 // interface LessonGoalProps {
 //     title: string;
 //     children: ReactNode
 // }
 
-const LessonGoal = ({ title, children }: PropsWithChildren<{ title: string }>) => {
+type LessonGoalProps = PropsWithChildren<{ title: string }>
+
+const LessonGoal: FC<LessonGoalProps> = ({ title, children }) => {
     return (
         <article className="p-5 rounded-md bg-gradient-to-r from-slate-800 to-slate-600 text-white gap-4">
             <div className="space-y-2">
