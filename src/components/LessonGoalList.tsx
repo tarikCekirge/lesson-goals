@@ -1,5 +1,7 @@
 import LessonGoal from "./LessonGoal";
 import { type LessonGoal as LGoal } from "../App"
+import InfoBox from "./InfoBox";
+import { type ReactNode } from "react";
 
 interface LessonGoalListProps {
     goals: LGoal[];
@@ -7,9 +9,20 @@ interface LessonGoalListProps {
 };
 
 const LessonGoalList = ({ goals, onDeleteGoal }: LessonGoalListProps) => {
+    let warningBox: ReactNode;
+    if (goals.length >= 4) {
+        warningBox = (
+            <InfoBox mode="warning" severity="high" >
+                You're collecting a lot of goals. Don't put too much on your plate!
+            </InfoBox>
+        )
+    }
+
     return (
         <>
+            {warningBox}
             {
+
                 goals.length > 0 ? (
                     <ul className='grid grid-cols-2 gap-4'>
                         {
@@ -23,7 +36,9 @@ const LessonGoalList = ({ goals, onDeleteGoal }: LessonGoalListProps) => {
                         }
                     </ul>
                 ) : (
-                    <div className="text-white text-xl bg-slate-600 p-4 text-center font-bold rounded-xl">No goals added yet.</div>
+                    <InfoBox mode="hint">
+                        You have no lesson goals yet. Start adding some.
+                    </InfoBox>
 
                 )
             }

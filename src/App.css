@@ -8,3 +8,15 @@
 body {
   @apply bg-slate-800;
 }
+
+.severity-low {
+  @apply border-amber-200 text-amber-200;
+}
+
+.severity-medium {
+  @apply border-amber-700 text-amber-700;
+}
+
+.severity-high {
+  @apply border-red-700 text-red-700;
+}
